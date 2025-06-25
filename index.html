@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday!</title>
+<!-- Import fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<!-- New font for special text -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-image: url("plant5.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #333;
+  padding: 50px;
+}
+h1 {
+  font-size: 3rem;
+  font-family: 'Pacifico', cursive;
+  color: #ff3366;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+p {
+  font-size: 1.25rem;
+}
+#moon {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  cursor: pointer;
+}
+#circle-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 30px auto;
+  display: none;
+}
+.circle-photo {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.circle-photo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255,102,102,0.5);
+}
+#card {
+  display: none;
+  padding: 20px;
+  background: #ffffffdd;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  max-width: 300px;
+  margin: 20px auto;
+  text-align: center;
+}
+#click-message {
+  position: absolute;
+  top: 50%; left: 50%; 
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff6600;
+  cursor: pointer;
+  display: none;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+#click-message:hover {
+  color: #ff3366;
+  transform: translate(-50%, -50%) scale(1.1);
+  text-shadow: 0 0 15px #ff3366, 0 0 25px #ff3366;
+}
+.special-birthday {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: #ff3366;
+}
+</style>
+</head>
+<body>
+<h1>Happy Birthday My Sweetheart</h1>
+<img id="moon" src="images.jpeg" title="Click me!">
+
+<div id="circle-container">
+  <img class="circle-photo" src="Snapchat-747801939.jpg" style="top:0; left:150px;" />
+  <img class="circle-photo" src="Snapchat-804358505.jpg" style="top:50px; left:275px;" />
+  <img class="circle-photo" src="Snapchat-1259978536.jpg" style="top:150px; left:300px;" />
+  <img class="circle-photo" src="Snapchat-1412752582.jpg" style="top:250px; left:250px;" />
+  <img class="circle-photo" src="Snapchat-1227886035.jpg" style="top:300px; left:150px;" />
+  <img class="circle-photo" src="Snapchat-1259978536.jpg" style="top:250px; left:50px;" />
+  <img class="circle-photo" src="Snapchat-1412752582.jpg" style="top:150px; left:0;" />
+  <img class="circle-photo" src="Snapchat-2139412329.jpg" style="top:50px; left:25px;" />
+  <div id="click-message">Click here</div>
+</div>
+
+<div id="card">
+  <h2>🎉 Happy Birthday!</h2>
+  <p>Wishing you all the happiness and love in the world on your special day!</p>
+  <p>Enjoy and celebrate to the fullest!</p>
+</div>
+
+<script>
+const moon = document.getElementById('moon');
+const circle = document.getElementById('circle-container');
+const photos = document.querySelectorAll('.circle-photo');
+const card = document.getElementById('card');
+const clickMessage = document.getElementById('click-message');
+
+moon.addEventListener('click', () => {
+  circle.style.display = 'block';
+  clickMessage.style.display = 'block';
+  card.style.display = 'none';
+  card.innerHTML = `
+    <h2 class="special-birthday">🎉 Happy Birthday Pyaari Albu</h2>
+    <p>Wishing you all the happiness and love in the world on your special day!</p>
+    <p>Enjoy and celebrate to the fullest!</p>
+  `;
+});
+
+photos.forEach(photo => {
+  photo.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const imgSrc = photo.getAttribute('src');
+    card.innerHTML = `<img src="${imgSrc}" style="width:100%; border-radius:10px;" />`;
+    card.style.display = 'block';
+  });
+});
+
+clickMessage.addEventListener('click', (event) => {
+  event.stopPropagation();
+  card.innerHTML = `
+    <h2 class="special-birthday">🎉 Happy Birthday Pyaari Albu</h2>
+    <p>Wishing you all the happiness and love in the world on your special day!</p>
+    <p>Enjoy and celebrate to the fullest!</p>
+  `;
+  card.style.display = 'block';
+});
+
+circle.addEventListener('click', (event) => {
+  if (!event.target.classList.contains('circle-photo') && event.target.id !== 'click-message') {
+    card.innerHTML = `
+      <h2>🎉 Happy Birthday!</h2>
+      <p>Wishing you all the happiness and love in the world on your special day!</p>
+      <p>Enjoy and celebrate to the fullest!</p>
+    `;
+    card.style.display = 'block';
+  }
+});
+</script>
+</body>
+</html>
